@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>鼠标移动div</title>
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #box {
+      width: 100px;
+      height: 100px;
+      background: blue;
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="box"></div>
+  <script type="text/javascript">
+    // 获取元素对象
+    const odiv = document.getElementById('box');
+    let x = 0;
+    let y = 0;
+    let l = 0;
+    let t = 0;
+    let move = false;
+
+    //绑定鼠标按下事件
+    odiv.onmousedown = function (e) {
+      //获取当前鼠标的位置
+      x = e.clientX;
+      y = e.clientY;
+      //获取当前元素的top和left
+      l = odiv.offsetLeft;
+      t = odiv.offsetTop;
+      move = true;
+    }
+    //绑定鼠标移动事件
+    window.onmousemove = function (e) {
+      //判断当前鼠标是否按下
+      if (!move) { return }
+
+      //获取当前鼠标位置
+      let _x = e.clientX;
+      let _y = e.clientY;
+
+      //计算新的left和top 
+      let newL = _x - (x - l);
+      let newT = _y - (y - t);
+
+      //修改位置
+      console.log(newL)
+      if (newL > 1000) {
+        odiv.style.right = 0;
+      }
+      odiv.style.left = `${newL}px`;
+      odiv.style.top = `${newT}px`;
+    }
+
+    //绑定鼠标抬起事件
+    odiv.onmouseup = function () {
+      move = false;
+    }
+
+  </script>
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .test {
+      width: 100px;
+      height: 100px;
+      position: relative;
+    }
+    .test::before {
+      content: " ";
+      position: absolute;
+      box-sizing: border-box;
+      top: 100px;
+      left: 0;
+      bottom: 0;
+      width: 200%;
+      height: 200%;
+      border-top: 1px solid black;
+      transform-origin: 0 0;
+      transform: scale(.5, .5);
+    }
+  </style>
+</head>
+<body>
+ <div class="test"></div>
+<script>
+   
+</script>
+</body>
+</html>
